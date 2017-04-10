@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Local Weather App</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <!-- Adds "Raleway" Google Font -->
+<link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+<!-- Adds Weather Icons CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css">
+
+<body>
+  <div class="container" id="content">
+    <div class="row" id="content_box">
+      <div class="col-md-7 text-center" id="temperature">
+      </div>
+      <div class="col-md-5 text-left">
+        <div class="row" id="data">
+          <div class="col-md-12" id="location">Retrieving Data...</div>
+          <!-- country + city -->
+          <div class="col-md-12" id="wind">Retrieving Data...</div>
+          <div class="col-md-12" id="weather">Retrieving Data...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="content2">
+    <div class="text-center" id="credits">
+      Powered by <a href="https://openweathermap.org/api">OpenWeatherMap</a> & <a href="https://ipinfo.io/developers">ipinfo</a> API
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

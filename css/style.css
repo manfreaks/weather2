@@ -1,0 +1,76 @@
+body {
+  font-family: 'Dosis', sans-serif;
+  background: url(https://theengineeringquest.files.wordpress.com/2015/09/mountains-night-clouds-lake.jpg) no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+a {
+  color: inherit;
+  /* blue colors for links too */
+  
+  text-decoration: inherit;
+  /* no underline */
+}
+
+#content {
+  padding: 0px 230px 0px 230px;
+}
+
+#content2 {
+  padding: 0px 215px 0px 215px;
+}
+
+#content_box,
+#credits {
+  color: #ffffff;
+  background-color: #fff;
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+#credits {
+  padding: 0px 0px 10px 0px;
+}
+
+#temperature {
+  font-size: 120px;
+}
+
+#icon {
+  font-size: 100px;
+  background-color: red;
+}
+
+#data {
+  padding: 37px 0px 29px 0px;
+  font-size: 25px;
+}
+
+#temperature:nth-child(1) {
+	padding: 0px 9px 0px 0px;
+	font-size: 90px !important;
+}
+/*
+#temperature:nth-child(2) {
+  padding: 0px 9px 0px 0px;
+  font-size: 110px !important;
+}
+*/
+
+#temperature i {
+  font-size: 70px !important;
+}
+
+#location i {
+  padding: 0px 11px 0px 0px;
+}
+
+#wind i {
+  padding: 0px 5px 0px 0px;
+}
+
+#weather i {
+  padding: 0px 8px 0px 0px;
+}
