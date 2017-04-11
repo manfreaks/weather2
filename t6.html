@@ -1,0 +1,586 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Gresik Tour Guide</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="animsition.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" href="material.deep_orange-blue.min.css">  
+    <link rel="stylesheet" href="css/swipebox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body style="overflow-x: hidden;">
+    <div class="animsition">
+      <!-- Header -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
+        <header class="mdl-layout__header mdl-layout__header--waterfall transparent-header">
+          <div class="mdl-layout__header-row">
+            <!-- Spacer -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Right Menu -->
+            <button id="top-header-menu" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
+          </div>
+        </header>
+        <!-- Top-right Dropdown Menu -->
+        <div class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="top-header-menu">
+          <a href="http://37.247.116.250/maprahmat/logout.php" class="animsition-link"><span class="mdl-menu__item">Logout</span></a>
+                  </div>
+        <!-- Sidebar -->
+        <div class="mdl-layout__drawer">
+          <!-- Top -->
+          <div class="mdl-card mdl-shadow--2dp mdl-color--primary mdl-color-text--blue-grey-50 drawer-profile">
+            <div class="mdl-card__title user">
+              
+              <span class="user-name"><b>Selamat Datang</b>, admin</span>
+              
+              <button id="user-menu" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">arrow_drop_down</i>
+              </button>
+            </div>
+            <!-- Top-right User -->
+            <div class="mdl-card__menu">
+              
+            </div>
+          </div>
+          <!-- Dropdown Menu -->
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-menu">
+            <li class="mdl-menu__item">hello@email.com</li>
+                      </ul>
+          <!-- Main Navigation -->
+          
+                    <nav class="mdl-navigation">
+            <a class="mdl-navigation__link animsition-link" href="https://rawgit.com/manfreaks/ugetlocation/master/mapadm3.html"><i class="material-icons">home</i><span>Halaman Utama User</span></a>
+            <a class="mdl-navigation__link animsition-link" href="http://37.247.116.250/maprahmat/data_wisatalist.php"><i class="material-icons">library_books</i><span>Data Wisata</span></a>
+            <a class="mdl-navigation__link animsition-link" href="http://37.247.116.250/maprahmat/operatorlist.php"><i class="material-icons">account_circle</i><span>Daftar Operator</span></a>
+                        
+          </nav>
+        </div>
+                <!-- Page Content -->
+        <main class="mdl-layout__content launch valign-wrapper"> <!-- vertical align container -->
+          <div class="valign" style="background-color: #FFB08A;"> <!-- vertical align element -->
+ <style>
+ td{
+     font-weight: bold;
+ }
+ </style><!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Gresik Tour Guide</title>
+    <center><h1>Gresik Tour Guide</h1></center>
+    <style>
+    #wrapper { position: relative; }
+   #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    /*  #map {
+        height: 70%;
+      }*/
+      html { height: 100% } 
+    
+    #map { height: 400px; } 
+    #wrapper { position: relative; }
+    #over_map { position: absolute; background-color: transparent; top: 10px; left: 10px; z-index: 99; background: white; }
+    #over_map_right { position: absolute; background-color: transparent; top: 10px; right: 10px; z-index: 99; background: white; }
+    </style>
+</head>
+<body>
+<!--<input type="text" id="lat1">
+<input type="text" id="long1">-->
+<!-- <input type="button" value="Posisi Saya" onclick="lokasiSaya();"> -->
+<b>Tempat Asal: </b>
+<br>
+<select id="start" onchange="calcRoute();">
+    <option>Lokasi Saya</option>
+        <option value="-7.1689733,112.6288385">Sunan Giri</option>
+        <option value="-6.8929031,112.465308">Pantai Delegan</option>
+        <option value="-6.9325,112.4497503">Gunung Surowiti</option>
+        <option value="-7.1567943,112.6318785">Telaga Ngipik</option>
+        <option value="-7.2553228,112.4436148">Maulana Malik Ibrahim</option>
+        <option value="-7.1559401,112.6472253">Kota Lama Gresik</option>
+        <option value="-6.9898677,112.5618725">Kanjeng Sepuh Sidayu</option>
+    </select>
+<br><br>
+<b>Tujuan: </b>
+<br>
+<select id="end" onchange="calcRoute();">
+    <option>Lokasi Saya</option>
+        <option value="-7.1689733,112.6288385">Sunan Giri</option>
+        <option value="-6.8929031,112.465308">Pantai Delegan</option>
+        <option value="-6.9325,112.4497503">Gunung Surowiti</option>
+        <option value="-7.1567943,112.6318785">Telaga Ngipik</option>
+        <option value="-7.2553228,112.4436148">Maulana Malik Ibrahim</option>
+        <option value="-7.1559401,112.6472253">Kota Lama Gresik</option>
+        <option value="-6.9898677,112.5618725">Kanjeng Sepuh Sidayu</option>
+    
+
+</select><br><br>
+
+<b>Pilih Kendaraan: </b>
+<br>
+<select id="mode">
+    <option value="DRIVING">Bus</option>
+    <option value="WALKING">Kendaraan Pribadi</option>
+    <!-- <option value="BICYCLING">Ojek</option> -->
+    <!-- <option value="TRANSIT">Bus</option> -->
+</select>
+
+
+<div id="wrapper">
+
+<div id="map">
+</div>
+    <div class="compass" id="over_map_right">
+        <div class="arrow"></div>
+        <div class="disc" id="compassDiscImg"></div>
+    </div>
+</div>
+
+
+<script>
+    //navigator.geolocation.getCurrentPosition(onSuccess, onError);
+function initMap() {
+ Latitude = -7.2630531;
+    Longitude = 112.7381202;
+    Latitude2 = -7.3384172;
+    Longitude2 = 112.7571388;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  var directionsService = new google.maps.DirectionsService;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    gestureHandling: 'greedy',
+    center: {lat: Latitude, lng: Latitude}
+  });
+  //===================================================================================================
+var infoWindow = new google.maps.InfoWindow({map: map});
+var pos;
+var lat1;
+var long1;
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            x = document.getElementById("start");
+            x.options[0].text  = "Lokasi Saya";
+            x.options[0].value = "" + position.coords.latitude + "," + position.coords.longitude;
+            x = document.getElementById("end");
+            x.options[0].text  = "Lokasi Saya";
+            x.options[0].value = "" + position.coords.latitude + "," + position.coords.longitude;
+            infoWindow.setPosition(pos);
+			
+			//======================================== Cuaca ===========================================
+							if (navigator.geolocation) { //Grab position with navigator
+						navigator.geolocation.getCurrentPosition(setpos);
+					}
+				});
+				function itFailed(res){
+				  console.log(res);
+				  $(".output").html("<h3>Sorry we were unable to find your location.</h3>");
+				}
+				function setpos(pos){ //Get info from openweathermap.org with position info
+				  $.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat="+pos.coords.latitude+"&lon="+pos.coords.longitude+"&units=imperial&appid=a9bcf4f4899aaab6b7194e3f674f162b").done(update).fail(itFailed);
+				}
+				var Temp=0; //Variable to store the Temp
+				var FC = true; //Boolean to toggle between F and C
+				function toggleTemp()
+				{
+				  if(FC)//Currently in F
+					{
+					  Temp=(Temp-32)*(5/9);
+					  FC=false;
+					  $(".temp").text("C");
+					}
+				  else //Currently in C
+					{
+					  Temp=(Temp*(9/5))+32;
+					  FC=true;
+					  $(".temp").text("F");
+					}
+				 $(".tempReadout").text(Temp.toPrecision(4)); 
+				}
+				function update(res)
+				{
+				  Temp=res.main.temp.toPrecision(4); //F by default
+				  //----------Set background---------------
+				  //res.weather[0].id :
+				  //200-232 = Thunderstorm
+				  //300-321 = Drizzle
+				  //500-531 = Rain
+				  //600-622 = Snow
+				  //701-781 = Atmosphere
+				  //800 = Clear
+				  //801-804 = Clouds
+				  //900-906 =Extreme
+				  //http://openweathermap.org/weather-conditions 
+				  //console.log(res.weather[0].id);
+				  
+				  //Thunderstorm
+				  if(res.weather[0].id>=200 && res.weather[0].id<=232){  $("body").css("background","url('https://upload.wikimedia.org/wikipedia/commons/0/0c/Rooymans2000_-_Morning_Lightning_Strike_in_Singapore_(by).jpg')"); }
+					//Drizzle
+				  if(res.weather[0].id>=300 && res.weather[0].id<=321){  $("body").css("background","url('http://s0.geograph.org.uk/geophotos/04/76/64/4766403_e1f206bf.jpg')"); }
+				  
+				  //Rain
+				  if(res.weather[0].id>=500 && res.weather[0].id<=531){  $("body").css("background","url('https://c1.staticflickr.com/1/50/155406169_2bcb8c025f_b.jpg')"); }
+				  
+				  //Snow
+				  if(res.weather[0].id>=600 && res.weather[0].id<=622){  $("body").css("background","url('http://res.freestockphotos.biz/pictures/9/9250-snow-covered-trees-pv.jpg')"); }
+				  
+				  //Atmosphere
+				  else if(res.weather[0].id>=701 && res.weather[0].id<=781){ $("body").css("background","url('http://s0.geograph.org.uk/geophotos/04/58/13/4581325_757d0cff.jpg')"); }
+				  
+				  //Clear
+				  else if(res.weather[0].id==800){ $("body").css("background","url('https://c2.staticflickr.com/2/1298/1340979055_a669e8cc70_b.jpg')"); }
+				  
+				  //Clouds
+				   else if(res.weather[0].id>=801 && res.weather[0].id<=804){ $("body").css("background","url('http://www.freegreatpicture.com/Max-Pixel/static/photo/1x/Skyporn-Clouds-Skies-Weather-Lookup-Sky-Cloudy-1571791.jpg')"); }
+				  //Extreme
+				  else if(res.weather[0].id>=900){ $("body").css("background","url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Dszpics1.jpg')"); }
+				  
+				  $("body").css("background-size","1400px 1000px");
+				  
+				  //---------Fill in text---------------
+				  $(".textOut").html("<h2>Your weather in "+res.name+"</h2>");
+				  $(".textOut").append("<h4>Current Temp: <span class='tempReadout'>"+res.main.temp+"</span><button class='temp'>F</button></h4>");
+				  $(".textOut").append("<h4 class='des'>"+res.weather[0].description+"</h4>");
+				  //------------Format new elements----------
+				  $(".des").css("textTransform","capitalize");
+				  $(".temp").click(toggleTemp);
+				   $(".temp").css("margin-left","5px");
+				   $(".temp").css("color","blue");
+				   $(".temp").css("background","none");
+				//======================================== Cuaca ===========================================
+			
+			
+            infoWindow.setContent('<b><font color="Red">Lokasi Saya.</font></b>' + res.main.temp);
+            map.setCenter(pos);
+            var marker = new google.maps.Marker({
+                position: pos,
+                title:"You are here!",
+                map:map
+                });
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+//===================================================================================================
+  directionsDisplay.setMap(map);
+  //============================================ auto center =========================================================
+  function addYourLocationButton (map, marker)
+{
+    var controlDiv = document.createElement('div');
+    var firstChild = document.createElement('button');
+    firstChild.style.backgroundColor = '#fff';
+    firstChild.style.border = 'none';
+    firstChild.style.outline = 'none';
+    firstChild.style.width = '28px';
+    firstChild.style.height = '28px';
+    firstChild.style.borderRadius = '2px';
+    firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+    firstChild.style.cursor = 'pointer';
+    firstChild.style.marginRight = '10px';
+    firstChild.style.padding = '0';
+    firstChild.title = 'Your Location';
+    controlDiv.appendChild(firstChild);
+    var secondChild = document.createElement('div');
+    secondChild.style.margin = '5px';
+    secondChild.style.width = '18px';
+    secondChild.style.height = '18px';
+    secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-2x.png)';
+    secondChild.style.backgroundSize = '180px 18px';
+    secondChild.style.backgroundPosition = '0 0';
+    secondChild.style.backgroundRepeat = 'no-repeat';
+    firstChild.appendChild(secondChild);
+    google.maps.event.addListener(map, 'center_changed', function () {
+        secondChild.style['background-position'] = '0 0';
+    });
+    firstChild.addEventListener('click', function () {
+        var imgX = 0,
+            animationInterval = setInterval(function () {
+                imgX = -imgX - 18 ;
+                secondChild.style['background-position'] = imgX+'px 0';
+            }, 500);
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                map.setCenter(latlng);
+                clearInterval(animationInterval);
+                secondChild.style['background-position'] = '-144px 0';
+            });
+        } else {
+            clearInterval(animationInterval);
+            secondChild.style['background-position'] = '0 0';
+        }
+    });
+    controlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+    controlDiv.remove();
+}
+  //============================================ auto center =========================================================
+  //=================================================== Timer ==================================================
+  function Timer(callback, delay) {
+    var timerId, start, remaining = delay;
+    this.pause = function() {
+        window.clearTimeout(timerId);
+        remaining -= new Date() - start;
+    };
+    this.resume = function() {
+        start = new Date();
+        window.clearTimeout(timerId);
+        timerId = window.setTimeout(callback, remaining);
+    };
+    this.resume();
+}
+  //=================================================== Timer ==================================================
+  //============================================================ Auto Update Lokasi ===================================
+  var marker = null;
+    var opsistart = document.getElementById("start");
+    var opsiend = document.getElementById("end");
+function autoUpdate() {
+ // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            x = document.getElementById("start");
+            x.options[0].text  = "Lokasi Saya";
+            x.options[0].value = "" + position.coords.latitude + "," + position.coords.longitude;
+            x = document.getElementById("end");
+            x.options[0].text  = "Lokasi Saya";
+            x.options[0].value = "" + position.coords.latitude + "," + position.coords.longitude;
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('<b><font color="Red">Lokasi Saya.</font></b>');
+           // map.setCenter(pos);
+            var marker = new google.maps.Marker({
+            position: pos,
+            title:""
+            });
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+        // To remove the marker from the map
+        marker.setMap(null);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+  // Call the autoUpdate() function every 1 second(s)
+  setTimeout(autoUpdate, 100);
+/*var timer = new Timer(autoUpdate, 1000);
+    if (opsistart.clicked == true) {
+        timer.pause();
+    } else if (opsiend.clicked == true) {
+        timer.pause();
+    } else {
+        timer.resume();
+    };
+*/
+    //var geoloccontrol = new klokantech.GeolocationControl(map, mapMaxZoom);
+}
+autoUpdate();
+addYourLocationButton(map, marker);
+/*
+function lokasiSaya() {
+      if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function (position) {
+         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+         map.setCenter(initialLocation);
+     });
+    }else {
+    alert('oops');
+    }
+}*/
+  //============================================================ Auto Update Lokasi ===================================
+  var onChangeHandler = function() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  };
+  document.getElementById('start').addEventListener('change', onChangeHandler);
+  document.getElementById('end').addEventListener('change', onChangeHandler);
+  document.getElementById('mode').addEventListener('change', function() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  });
+}
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  var selectedMode = document.getElementById('mode').value;
+  directionsService.route({
+    origin: document.getElementById('start').value,
+    destination: document.getElementById('end').value,
+    // Note that Javascript allows us to access the constant
+    // using square brackets and a string value as its
+    // "property."
+    travelMode: google.maps.TravelMode[selectedMode]
+  }, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", function(event) {
+    if (window.DeviceOrientationEvent) {
+  document.getElementById("notice").innerHTML = "Gaaf! De DeviceOrientationEvent API word door dit toestel ondersteund.";
+  window.addEventListener('deviceorientation', function(eventData) {
+      // gamma: Tilting the device from left to right. Tilting the device to the right will result in a positive value.
+    // gamma: Het kantelen van links naar rechts in graden. Naar rechts kantelen zal een positieve waarde geven.
+    var tiltLR = eventData.gamma;
+    // beta: Tilting the device from the front to the back. Tilting the device to the front will result in a positive value.
+    // beta: Het kantelen van voor naar achteren in graden. Naar voren kantelen zal een positieve waarde geven.
+    var tiltFB = eventData.beta;
+    // alpha: The direction the compass of the device aims to in degrees.
+    // alpha: De richting waarin de kompas van het apparaat heen wijst in graden.
+    var dir = eventData.alpha
+    // Call the function to use the data on the page.
+    // Roep de functie op om de data op de pagina te gebruiken.
+    deviceOrientationHandler(tiltLR, tiltFB, dir);
+  }, false);
+} else {
+  document.getElementById("notice").innerHTML = "Helaas. De DeviceOrientationEvent API word niet door dit toestel ondersteund."
+};
+    function deviceOrientationHandler(tiltLR, tiltFB, dir) {
+      document.getElementById("tiltLR").innerHTML = Math.ceil(tiltLR);
+      document.getElementById("tiltFB").innerHTML = Math.ceil(tiltFB);
+      document.getElementById("direction").innerHTML = Math.ceil(dir);
+      // Rotate the disc of the compass.
+      // Laat de kompas schijf draaien.
+      var compassDisc = document.getElementById("compassDiscImg");
+      compassDisc.style.webkitTransform = "rotate("+ dir +"deg)";
+      compassDisc.style.MozTransform = "rotate("+ dir +"deg)";
+      compassDisc.style.transform = "rotate("+ dir +"deg)";
+    }
+});
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnn2Jq5RvSTKVe7FmpWytZJGi4-JjbMpA&callback=initMap"
+        async defer></script>
+<!-- <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script> -->
+<style>
+@import url('http://fonts.googleapis.com/css?family=Wallpoet');
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body {
+ 
+}
+.compass {
+    position: relative;
+    width: 37px;
+    height: 37px;
+    margin: 2px auto;
+    background: #222;
+    padding: 2px;
+    border-radius: 4px;
+    /*border: 5px solid #444;*/
+    overflow: hidden;
+}
+.compass .disc {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 200;
+    background: url('compass.svg');
+    width: 37px;
+    height: 37px;
+    background-size: 100%;
+}
+.compass .arrow {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 1000;
+    background: url('arrow.svg');
+    width: 37px;
+    height: 37px;
+    background-size: 100%;
+}
+</style>
+
+
+    <div id="notice"></div>
+
+
+    <div class="orientation-data">
+        <div> <span style="visibility: hidden;" id="tiltFB"></span></div>
+        <div> <span style="visibility: hidden;" id="tiltLR"></span></div>
+        <div> <span style="visibility: hidden;" id="direction"></span></div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+    if (window.DeviceOrientationEvent) {
+  document.getElementById("notice").innerHTML = "";
+  window.addEventListener('deviceorientation', function(eventData) {
+      // gamma: Tilting the device from left to right. Tilting the device to the right will result in a positive value.
+    // gamma: Het kantelen van links naar rechts in graden. Naar rechts kantelen zal een positieve waarde geven.
+    var tiltLR = eventData.gamma;
+    // beta: Tilting the device from the front to the back. Tilting the device to the front will result in a positive value.
+    // beta: Het kantelen van voor naar achteren in graden. Naar voren kantelen zal een positieve waarde geven.
+    var tiltFB = eventData.beta;
+    // alpha: The direction the compass of the device aims to in degrees.
+    // alpha: De richting waarin de kompas van het apparaat heen wijst in graden.
+    var dir = eventData.alpha
+    // Call the function to use the data on the page.
+    // Roep de functie op om de data op de pagina te gebruiken.
+    deviceOrientationHandler(tiltLR, tiltFB, dir);
+  }, false);
+} else {
+  document.getElementById("notice").innerHTML = ""
+};
+    function deviceOrientationHandler(tiltLR, tiltFB, dir) {
+      document.getElementById("tiltLR").innerHTML = Math.ceil(tiltLR);
+      document.getElementById("tiltFB").innerHTML = Math.ceil(tiltFB);
+      document.getElementById("direction").innerHTML = Math.ceil(dir);
+      
+      // Rotate the disc of the compass.
+      // Laat de kompas schijf draaien.
+      var compassDisc = document.getElementById("compassDiscImg");
+      compassDisc.style.webkitTransform = "rotate("+ dir +"deg)";
+      compassDisc.style.MozTransform = "rotate("+ dir +"deg)";
+      compassDisc.style.transform = "rotate("+ dir +"deg)";
+    }
+});
+    </script>
+    </body>
+</html>          </div>
+        </main>
+        
+      </div>
+    </div>
+    
+        <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/js/jquery.animsition.js"></script>
+    <script src="js/sweetalert.min.js"></script> 
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/function.js"></script>
+  </body>
+</html>
